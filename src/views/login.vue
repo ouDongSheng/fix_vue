@@ -139,7 +139,7 @@ export default {
         // 使用微信登录,申请微信授权,获取到code,然后判断是不是系统用户,如果不是,关联手机号,如果是,直接登录
         var shareUserId = commonUtil.parseUrlParams('shareUserId')
         var productId = commonUtil.parseUrlParams('productId')
-        let redirectUrl = 'http://shengtai.ende168.com/?shareUserId='+shareUserId+'&productId='+productId+'#/login'
+        let redirectUrl = 'http://192.168.31.188:8080/?shareUserId='+shareUserId+'&productId='+productId+'#/login'
         redirectUrl = encodeURIComponent(redirectUrl);
         window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=' + constConfig.WX_APP_ID +
                 '&redirect_uri=' + redirectUrl + '&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect';

@@ -284,10 +284,13 @@ export default {
 
 }
 .show {
+  width: 100%;
   display: -webkit-flex;
   display: flex;
-   -webkit-justify-content: flex-start;
+  -webkit-justify-content: flex-start;
   justify-content: flex-start;
+  margin-bottom: 3rem;
+   flex-wrap:wrap ;
 }
 .goods-div {
   background: #fff;

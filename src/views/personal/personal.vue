@@ -93,34 +93,6 @@
         </div>
       </div>
 
-      <div class="personal-div" v-if="memberClass==2">
-        <div class="personal-div-title">
-          <van-cell title="我的推荐" :icon="`${publicPath}img/personal-recomend.png`" />
-        </div>
-        <div>
-          <div class="personal-div-content-li" @click="onUser">
-            <van-cell title="普通用户" :icon="`${publicPath}img/personal-team-first.png`" is-link>
-              <span class="personal-team-item-value">
-                {{detail.teamCommonUserCount}}位
-              </span>
-            </van-cell>
-          </div>
-          <div class="personal-div-content-li" @click="onMember">
-            <van-cell title="会员" :icon="`${publicPath}img/personal-team-second.png`" is-link>
-              <span class="personal-team-item-value">
-                {{detail.teamVIPUserCount}}位
-              </span>
-            </van-cell>
-          </div>
-          <div class="personal-div-content-li" @click="onPartnerApply">
-            <van-cell title="申请成为合伙人" :icon="`${publicPath}img/personal-list-first.png`" is-link/>
-          </div>
-          <div class="personal-div-content-li" @click="onPartnerRule">
-            <van-cell title="查看合伙人相关规则" :icon="`${publicPath}img/personal-list-second.png`" is-link/>
-          </div>
-        </div>
-      </div>
-
       <!-- 积分池 -->
       <div class="personal-div" v-if="memberClass==3">
         <div class="personal-div-title">
@@ -146,14 +118,14 @@
       <!-- 个人订单 -->
       <div class="personal-div">
         <div class="personal-div-title">
-          <van-cell title="个人订单" :icon="`${publicPath}img/personal-order.png`"/>
+          <van-cell title="个人订单" :icon="`${publicPath}img/personal-order-black.png`"/>
         </div>
         <div class="personal-div-content">
           <van-row>
             <van-col span="8">
               <div class="personal-div-icon" @click="onStayHandle">
                 <div class="personal-div-icon-img">
-                  <van-image fit="contain" :src="`${publicPath}img/personal-order-first.png`"/>
+                  <van-image fit="contain" :src="`${publicPath}img/personal-order-first-orange.png`"/>
                 </div>
                 <div class="personal-div-icon-text">待处理</div>
               </div>
@@ -161,7 +133,7 @@
             <van-col span="8">
               <div class="personal-div-icon" @click="onDeliverGoods">
                 <div class="personal-div-icon-img">
-                  <van-image fit="contain" :src="`${publicPath}img/personal-order-second.png`"/>
+                  <van-image fit="contain" :src="`${publicPath}img/personal-order-second-orange.png`"/>
                 </div>
                 <div class="personal-div-icon-text">已发货</div>
               </div>
@@ -169,27 +141,12 @@
             <van-col span="8">
               <div class="personal-div-icon" @click="onComplete">
                 <div class="personal-div-icon-img">
-                  <van-image fit="contain" :src="`${publicPath}img/personal-order-thrid.png`"/>
+                  <van-image fit="contain" :src="`${publicPath}img/personal-order-thrid-orange.png`"/>
                 </div>
                 <div class="personal-div-icon-text">已完成</div>
               </div>
             </van-col>
           </van-row>
-        </div>
-      </div>
-
-      <div class="personal-div" v-if="memberClass==1">
-        <div class="personal-div-content-li" @click="onPartnerApply">
-          <van-cell title="申请成为合伙人" :icon="`${publicPath}img/personal-list-first.png`" is-link/>
-        </div>
-        <div class="personal-div-content-li" @click="onPartnerRule">
-          <van-cell title="查看合伙人相关规则" :icon="`${publicPath}img/personal-list-second.png`" is-link/>
-        </div>
-        <div class="personal-div-content-li" @click="onMemberDescription">
-          <van-cell title="申请成为会员" :icon="`${publicPath}img/personal-list-thrid.png`" is-link/>
-        </div>
-        <div class="personal-div-content-li" @click="onMemberDescription">
-          <van-cell title="查看会员相关规则" :icon="`${publicPath}img/personal-list-four.png`" is-link/>
         </div>
       </div>
 
@@ -280,10 +237,10 @@ export default {
     onShare(){
       // 微信自定义分享给朋友
       let option = {
-        title: "恩德商城", // 分享标题, 请自行替换
-        desc: "恩德商城，正品保证，好物与你分享", // 分享描述, 请自行替换
-        link: 'http://shengtai.ende168.com/?shareUserId='+this.id+'#/home', // 分享链接，根据自身项目决定是否需要split
-        imgUrl: 'http://shengtai.ende168.com/img/logo.png', // 分享图标, 请自行替换，需要绝对路径
+        title: "家电清洗", // 分享标题, 请自行替换
+        desc: "家电清洗，质量保证，好物与你分享", // 分享描述, 请自行替换
+        link: 'http://192.168.31.188:8080/?shareUserId='+this.id+'#/home', // 分享链接，根据自身项目决定是否需要split
+        imgUrl: 'http://192.168.31.188:8080/img/logo.png', // 分享图标, 请自行替换，需要绝对路径
         success: () => {
           alert('分享成功')
         },
@@ -416,7 +373,7 @@ export default {
       setTimeout(function() {
         var shareUserId = commonUtil.parseUrlParams('shareUserId')
         var productId = commonUtil.parseUrlParams('productId')
-        window.location.href = 'http://shengtai.ende168.com/?shareUserId='+shareUserId+'&productId='+productId+'#/login'
+        window.location.href = 'http://192.168.31.188:8080/?shareUserId='+shareUserId+'&productId='+productId+'#/login'
       }, 1000);
     },
     onLogin() {
@@ -424,9 +381,9 @@ export default {
       var _this = this
       setTimeout(function() {
         var shareUserId = commonUtil.parseUrlParams('shareUserId')
-        window.location.href = 'http://shengtai.ende168.com/?shareUserId='+shareUserId+'#/login'
+        window.location.href = 'http://192.168.31.188:8080?shareUserId='+shareUserId+'#/login'
         var productId = commonUtil.parseUrlParams('productId')
-        window.location.href = 'http://shengtai.ende168.com/?shareUserId='+shareUserId+'&productId='+productId+'#/login'
+        window.location.href = 'http://192.168.31.188:8080?shareUserId='+shareUserId+'&productId='+productId+'#/login'
       }, 500);
 
     }

@@ -41,14 +41,14 @@ body {
   line-height: 2.7rem!important;
 }
 .van-button--info{
-  background-color: #199BFF!important;
-  border: 1px solid #199BFF!important;
+  background-color: #ff5800!important;
+  border: 1px solid #ff5800!important;
 }
 .van-button--plain{
   background-color: #fff!important;
 }
 .van-button--plain.van-button--info{
-  color: #199BFF!important;
+  color: #ff5800!important;
 }
 .van-button--hairline.van-button--round::after, .van-button--round{
   border-radius: 999px!important;

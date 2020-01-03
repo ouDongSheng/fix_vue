@@ -288,8 +288,8 @@ export default {
       var shareUserId = userInfo.id
       let option = {
         title: this.detail.name, // 分享标题, 请自行替换
-        desc: "售价：¥"+this.detail.price+"。恩德商城，正品保证，好物与你分享", // 分享描述, 请自行替换
-        link: 'http://shengtai.ende168.com/?shareUserId='+shareUserId+'#/productDetail?id='+this.id, // 分享链接，根据自身项目决定是否需要split
+        desc: "售价：¥"+this.detail.price+"。家电清洗，质量保证，好物与你分享", // 分享描述, 请自行替换
+        link: 'http://192.168.31.188:8080/?shareUserId='+shareUserId+'#/productDetail?id='+this.id, // 分享链接，根据自身项目决定是否需要split
         imgUrl: this.detail.smallPic[0], // 分享图标, 请自行替换，需要绝对路径
         success: () => {
           alert('分享成功')
@@ -304,7 +304,7 @@ export default {
     onLogin() {
       //登录
       var shareUserId = commonUtil.parseUrlParams('shareUserId')
-      window.location.href = 'http://shengtai.ende168.com/?shareUserId='+shareUserId+'&productId='+this.id+'#/login'
+      window.location.href = 'http://192.168.31.188:8080/?shareUserId='+shareUserId+'&productId='+this.id+'#/login'
     }
   }
 };

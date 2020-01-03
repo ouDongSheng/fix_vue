@@ -48,7 +48,7 @@ const routes = [
         name: 'home',
         component: Home,
         meta: {
-          title: '恩德商城',
+          title: '家电清洗',
           keepAlive: true //此组件需要被缓存
         }
       },
