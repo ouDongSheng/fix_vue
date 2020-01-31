@@ -5,6 +5,7 @@ import url from './config.js'
 import commonUtil from '@/assets/js/commonUtil.js';
 
 var TUrl = url.url
+var ipAndPort = url.ipAndPort
 
 const generateApiMap = (map) => {
     let facade = {}
@@ -48,7 +49,7 @@ const sendApiInstance = (method, url, file, params) => {
                     
                     var shareUserId = commonUtil.parseUrlParams('shareUserId')
                     var productId = commonUtil.parseUrlParams('productId')
-                    window.location.href = 'http://192.168.31.188:8080/?shareUserId='+shareUserId+'&productId='+productId+'#/login'
+                    window.location.href = ipAndPort +'?shareUserId='+shareUserId+'&productId='+productId+'#/login'
                 } else {
                     return res
                 }
@@ -84,7 +85,7 @@ const sendApiInstance = (method, url, file, params) => {
                     
                     var shareUserId = commonUtil.parseUrlParams('shareUserId')
                     var productId = commonUtil.parseUrlParams('productId')
-                    window.location.href = 'http://192.168.31.188:8080/?shareUserId='+shareUserId+'&productId='+productId+'#/login'
+                    window.location.href = ipAndPort + '?shareUserId='+shareUserId+'&productId='+productId+'#/login'
                 } else {
                     return res
                 }
@@ -119,7 +120,7 @@ const sendApiInstance = (method, url, file, params) => {
                     
                     var shareUserId = commonUtil.parseUrlParams('shareUserId')
                     var productId = commonUtil.parseUrlParams('productId')
-                    window.location.href = 'http://192.168.31.188:8080/?shareUserId='+shareUserId+'&productId='+productId+'#/login'
+                    window.location.href = ipAndPort + '/?shareUserId='+shareUserId+'&productId='+productId+'#/login'
 
                 } else {
                     return res

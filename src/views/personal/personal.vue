@@ -202,6 +202,7 @@ export default {
 
       base64: '',
       show: false,
+      ipAndPort: config.ipAndPort,
     }
   },
   activated() {
@@ -239,8 +240,8 @@ export default {
       let option = {
         title: "家电清洗", // 分享标题, 请自行替换
         desc: "家电清洗，质量保证，好物与你分享", // 分享描述, 请自行替换
-        link: 'http://192.168.31.188:8080/?shareUserId='+this.id+'#/home', // 分享链接，根据自身项目决定是否需要split
-        imgUrl: 'http://192.168.31.188:8080/img/logo.png', // 分享图标, 请自行替换，需要绝对路径
+        link: this.ipAndPort + '?shareUserId='+this.id+'#/home', // 分享链接，根据自身项目决定是否需要split
+        imgUrl: this.ipAndPort + 'img/logo.png', // 分享图标, 请自行替换，需要绝对路径
         success: () => {
           alert('分享成功')
         },
@@ -373,7 +374,7 @@ export default {
       setTimeout(function() {
         var shareUserId = commonUtil.parseUrlParams('shareUserId')
         var productId = commonUtil.parseUrlParams('productId')
-        window.location.href = 'http://192.168.31.188:8080/?shareUserId='+shareUserId+'&productId='+productId+'#/login'
+        window.location.href = _this.ipAndPort + '?shareUserId='+shareUserId+'&productId='+productId+'#/login'
       }, 1000);
     },
     onLogin() {
@@ -381,9 +382,9 @@ export default {
       var _this = this
       setTimeout(function() {
         var shareUserId = commonUtil.parseUrlParams('shareUserId')
-        window.location.href = 'http://192.168.31.188:8080?shareUserId='+shareUserId+'#/login'
+        window.location.href = _this.ipAndPort + '?shareUserId='+shareUserId+'#/login'
         var productId = commonUtil.parseUrlParams('productId')
-        window.location.href = 'http://192.168.31.188:8080?shareUserId='+shareUserId+'&productId='+productId+'#/login'
+        window.location.href = _this.ipAndPort + '?shareUserId='+shareUserId+'&productId='+productId+'#/login'
       }, 500);
 
     }
