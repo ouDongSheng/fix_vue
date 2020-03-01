@@ -13,6 +13,7 @@ import AddressList from '../views/product/addressList.vue'
 import AddressAdd from '../views/product/addressAdd.vue'
 import AddressModify from '../views/product/addressModify.vue'
 import MemberDescription from '../views/product/memberDescription.vue'
+import comment from '../views/product/comment.vue'
 
 import Personal from '../views/personal/personal.vue'
 import MyWallet from '../views/personal/myWallet.vue'
@@ -253,6 +254,13 @@ const routes = [
     component: MyTeam,
     meta: {
       title: '我的团队',
+    }
+  },{
+    path: '/comment',
+    name: 'comment',
+    component: comment,
+    meta: {
+      title: '评论',
     }
   }
 ]

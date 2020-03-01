@@ -13,28 +13,28 @@
               :src="`${publicPath}img/20190905180731_69473.png`"
             ></van-image>
           </a>
-          <a @click="onDetail(list[0].id)">
+          <a @click="onDetail(list[1].id)">
             <van-image
               class="good_image"
               fit="contain"
               :src="`${publicPath}img/20190905180800_50139.png`"
             ></van-image>
           </a>
-          <a @click="onDetail(list[0].id)">
+          <a @click="onDetail(list[2].id)">
             <van-image
               class="good_image"
               fit="contain"
               :src="`${publicPath}img/20190905180819_62319.png`"
             ></van-image>
           </a>
-          <a @click="onDetail(list[0].id)">
+          <a @click="onDetail(list[3].id)">
             <van-image
               class="good_image"
               fit="contain"
               :src="`${publicPath}img/20190905180853_79703.png`"
             ></van-image>
           </a>
-          <a @click="onDetail(list[0].id)">
+          <a @click="onDetail(list[4].id)">
             <van-image
               class="good_image"
               fit="contain"
@@ -117,9 +117,7 @@
                   </div>
                 </div>
               </div>
-            </div>
-
-           
+            </div>          
           </div>
           <div class="show" v-if="cur==1">
             <div
@@ -180,7 +178,7 @@ export default {
       list: "",
       col: 2,
       cur: 0,
-      masterCategory: 1
+      masterCategory: 1 
     };
   },
   created() {

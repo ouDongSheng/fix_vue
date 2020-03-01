@@ -81,4 +81,12 @@ export default {
     //申请
     applyAdd:{ url: 'app/partner/apply/recode/add', method: 'post', file: ''},
 
+    //查全部评论
+    listAllComment: {url:'app/comment/all', method: 'get', file: ''},
+    listGoodComment: {url:'app/comment/good', method: 'get', file: ''},
+    listBadComment: {url:'app/comment/bad', method: 'get', file: ''},
+    listMediumComment: {url:'app/comment/medium', method: 'get', file: ''},
+    listImageComment: {url:'app/comment/image', method: 'get', file: ''},
+
+    listCountComment: {url:'app/comment/listallcount', method: 'get', file: ''},
 }
