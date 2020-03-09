@@ -1,102 +1,112 @@
 <template>
-    <div class="sureOrder">
-        <div class="sure-order-address">
-            <div v-if="!address" class="no-address">
-                <div class="no-address-img">
-                    <van-image fit="contain" :src="`${publicPath}img/sure-order-address.png`"></van-image>
-                    <div>您还没有收货地址哦~</div>
-                </div>
-                <div class="no-address-btn">
-                    <van-button type="info" size="mini" plain hairline round @click="onAddressAdd">去设置</van-button>
-                </div>
-            </div>
-            <div v-else class="my-address" @click="onAddress">
-                <div class="my-address-img">
-                    <van-image fit="contain" src="img/sure-order-local.png"></van-image>
-                </div>
-                <div class="my-address-content">
-                    <div class="my-address-person">
-                        <span>{{address.receiverName}}</span>
-                        <span>{{address.receiverTelephone}}</span>
-                    </div>
-                    <div class="my-address-address">
-                        {{address.province}}{{address.city}}{{address.area}}{{address.detailAddress}}
-                    </div>
-                </div>
-            </div>
+  <div class="sureOrder">
+    <div class="sure-order-address">
+      <div v-if="!address" class="no-address">
+        <div class="no-address-img">
+          <van-image fit="contain" :src="`${publicPath}img/sure-order-address.png`"></van-image>
+          <div>您还没有收货地址哦~</div>
         </div>
-        <div class="my-order">
-            <div>
-                <orderGoods :selectGoodsDetail="selectGoodsDetail"></orderGoods>
-                <div class="sku-good-num">
-                    <div>数量</div>
-                    <div>
-                        <van-stepper v-model="selectGoodsDetail.count" @change="onCount"/>
-                    </div>
-                </div>
-            </div>
-            <div class="order-remark">
-                <div class="order-remark-title">订单备注</div>
-                <div class="order-remark-field">
-                    <van-field
-                            v-model="remark"
-                            rows="2"
-                            autosize
-                            type="textarea"
-                            maxlength="50"
-                            placeholder="选填，请先与商家协商一致。"
-                            show-word-limit
-                    />
-                </div>
-            </div>
-
+        <div class="no-address-btn">
+          <van-button type="info" size="mini" plain hairline round @click="onAddressAdd">去设置</van-button>
         </div>
-        <div class="fixed-bottom">
-            <div class="flex-bottom">
-                <div class="flex-left">共{{selectGoodsDetail.count}}件</div>
-                <div class="flex-right">
-                    <div class="flex-right-price">
-                        <span>实付金额：</span>
-                        <span>￥{{actualPrice|formatPrice}}</span>
-                    </div>
-                    <div>
-                        <van-button type="info" size="normal" :disabled="submitBtn" @click="toSubmit">提交订单</van-button>
-                    </div>
-                </div>
-
-            </div>
+      </div>
+      <div v-else class="my-address" @click="onAddress">
+        <div class="my-address-img">
+          <van-image fit="contain" src="img/sure-order-local.png"></van-image>
         </div>
-
-        <van-popup
-          v-model="show"
-          :style="{ width: '80%' }"
-          :close-on-click-overlay="popupCloseFlag"
-        >
-          <div class="popup-div">
-              <div class="popup-title">提示</div>
-              <div class="popup-content">
-                  <div class="pupup-p">
-                      <p>您还未领取合伙人权益</p>
-                      <p>成为会员及合伙人将会享受更多的购买优惠</p>
-                  </div>
-                  <div class="popup-btn">
-                      <van-button type="info" block size="normal" @click="onMember">了解会员</van-button>
-                      <van-button type="info" block size="normal" @click="onMember">了解合伙人</van-button>
-                      <van-button type="default" block size="normal" :disabled="submitBtn"  @click="onSubmit">暂不了解</van-button>
-                  </div>
-              </div>
+        <div class="my-address-content">
+          <div class="my-address-person">
+            <span>{{address.receiverName}}</span>
+            <span>{{address.receiverTelephone}}</span>
           </div>
-        </van-popup>
-
+          <div
+            class="my-address-address"
+          >{{address.province}}{{address.city}}{{address.area}}{{address.detailAddress}}</div>
+        </div>
+      </div>
     </div>
+    <div class="my-order">
+      <div>
+        <orderGoods :selectGoodsDetail="selectGoodsDetail"></orderGoods>
+        <div class="sku-good-num">
+          <div>数量</div>
+          <div>
+            <van-stepper v-model="selectGoodsDetail.count" @change="onCount" />
+          </div>
+        </div>
+      </div>
+      <div class="jkEfnqgK">
+        <div class="lsTwjURS" data-active="before-white">
+          <div class="_1_hNPsxH _1IJc3pzp">
+            <div class="_2__oOi97">
+              <img fit="contain" src="img/come11.png" class="come _2b0QrMgy" />
+              <span class="_3s-vW8Hg _2b0QrMgy">货到付款</span>
+              <i class="fa fa-check fa-lg"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="order-remark">
+        <div class="order-remark-title">订单备注</div>
+        <div class="order-remark-field">
+          <van-field
+            v-model="remark"
+            rows="2"
+            autosize
+            type="textarea"
+            maxlength="50"
+            placeholder="选填，请先与商家协商一致。"
+            show-word-limit
+          />
+        </div>
+      </div>
+    </div>
+    <div class="fixed-bottom">
+      <div class="flex-bottom">
+        <div class="flex-left">共{{selectGoodsDetail.count}}件</div>
+        <div class="flex-right">
+          <div class="flex-right-price">
+            <span>实付金额：</span>
+            <span>￥{{actualPrice|formatPrice}}</span>
+          </div>
+          <div>
+            <van-button type="info" size="normal" :disabled="submitBtn" @click="onSubmit">提交订单</van-button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <van-popup v-model="show" :style="{ width: '80%' }" :close-on-click-overlay="popupCloseFlag">
+      <div class="popup-div">
+        <div class="popup-title">提示</div>
+        <div class="popup-content">
+          <div class="pupup-p">
+            <p>您还未领取合伙人权益</p>
+            <p>成为会员及合伙人将会享受更多的购买优惠</p>
+          </div>
+          <div class="popup-btn">
+            <van-button type="info" block size="normal" @click="onMember">了解会员</van-button>
+            <van-button type="info" block size="normal" @click="onMember">了解合伙人</van-button>
+            <van-button
+              type="default"
+              block
+              size="normal"
+              :disabled="submitBtn"
+              @click="onSubmit"
+            >暂不了解</van-button>
+          </div>
+        </div>
+      </div>
+    </van-popup>-->
+  </div>
 </template>
 
 <script>
 import api from "../../api";
 import constConfig from "../../api/config.js";
-import wxapi from '@/assets/js/jweixin.js'
-import commonUtil from '@/assets/js/commonUtil.js';
-import { setTimeout } from 'timers';
+import wxapi from "@/assets/js/jweixin.js";
+import commonUtil from "@/assets/js/commonUtil.js";
+import { setTimeout } from "timers";
 
 export default {
   name: "sureOrder",
@@ -121,14 +131,15 @@ export default {
 
       show: false, // 支付提示
       popupCloseFlag: false,
-      shareUserId: '',
-      payRecode: '',
-      transactionId: '',
+      shareUserId: "",
+      payRecode: "",
+      transactionId: "",
       submitBtn: false,
+      img: ""
     };
   },
   created() {
-    this.shareUserId = commonUtil.parseUrlParams('shareUserId')
+    this.shareUserId = commonUtil.parseUrlParams("shareUserId");
     this.productId = this.$route.query.productId;
     this.getDetail();
 
@@ -142,48 +153,52 @@ export default {
     }
   },
   mounted() {
-    wxapi.wxRegister()//配置
+    wxapi.wxRegister(); //配置
   },
   methods: {
     getDetail() {
       // 产品详情
       let _this = this;
-      api.findProductInfo({
-        productId: this.productId
-      }).then(res => {
-        if (res.code == 200) {
-          //商品详情
-          _this.selectGoodsDetail.productImage = res.data.smallPic
-            ? res.data.smallPic.split(",")[0]
-            : "";
-          _this.selectGoodsDetail.productName = res.data.name;
-          _this.selectGoodsDetail.goodsId = _this.$route.query.goodsId;
-          _this.selectGoodsDetail.count = _this.$route.query.count;
-          _this.selectGoodsDetail.skuName = _this.$route.query.property;
-          _this.selectGoodsDetail.price = _this.$route.query.price;
-          _this.calculationM();
-        } else {
-          _this.$toast(res.msg);
-        }
-      });
+      api
+        .findProductInfo({
+          productId: this.productId
+        })
+        .then(res => {
+          if (res.code == 200) {
+            //商品详情
+            _this.selectGoodsDetail.productImage = res.data.smallPic
+              ? res.data.smallPic.split(",")[0]
+              : "";
+            _this.selectGoodsDetail.productName = res.data.name;
+            _this.selectGoodsDetail.goodsId = _this.$route.query.goodsId;
+            _this.selectGoodsDetail.count = _this.$route.query.count;
+            _this.selectGoodsDetail.skuName = _this.$route.query.property;
+            _this.selectGoodsDetail.price = _this.$route.query.price;
+            _this.calculationM();
+          } else {
+            _this.$toast(res.msg);
+          }
+        });
     },
     /**
      * 获取用户默认地址
      */
     commonAddress() {
-      api.listClientAddress({
-        commonAddress: 1
-      }).then(res => {
-        if (res.code == 200 && res.data.length > 0) {
-          let addressList = res.data;
-          //默认地址
-          let commonAddress = addressList[0];
-          //默认地址赋值
-          this.address = commonAddress;
-        }else{
-          this.addressList()
-        }
-      });
+      api
+        .listClientAddress({
+          commonAddress: 1
+        })
+        .then(res => {
+          if (res.code == 200 && res.data.length > 0) {
+            let addressList = res.data;
+            //默认地址
+            let commonAddress = addressList[0];
+            //默认地址赋值
+            this.address = commonAddress;
+          } else {
+            this.addressList();
+          }
+        });
     },
     /**
      * 获取当前用户地址列表
@@ -201,15 +216,17 @@ export default {
      * 根据地址id查询地址详情进行赋值
      */
     findAddressById(addressId) {
-      api.findAddressById({
-        id: addressId
-      }).then(res => {
-        if (res.code == 200 && res.data) {
-          //地址详情
-          let addressInfo = res.data;
-          this.address = addressInfo;
-        }
-      });
+      api
+        .findAddressById({
+          id: addressId
+        })
+        .then(res => {
+          if (res.code == 200 && res.data) {
+            //地址详情
+            let addressInfo = res.data;
+            this.address = addressInfo;
+          }
+        });
     },
     onAddressAdd() {
       // 去设置
@@ -235,107 +252,113 @@ export default {
     calculationM() {
       //计算价格
       var this_ = this;
-      var singleOrderList = [{
-        goodId: this.selectGoodsDetail.goodsId,
-        count: this.selectGoodsDetail.count
-      }];
-      api.calculationPrice({
-        singleOrderList: singleOrderList
-      })
-      .then(res => {
-        if (res.code == 200 && res.data) {
-          this_.actualPrice = res.data.payAble;
+      var singleOrderList = [
+        {
+          goodId: this.selectGoodsDetail.goodsId,
+          count: this.selectGoodsDetail.count
         }
-      });
+      ];
+      api
+        .calculationPrice({
+          singleOrderList: singleOrderList
+        })
+        .then(res => {
+          if (res.code == 200 && res.data) {
+            this_.actualPrice = res.data.payAble;
+          }
+        });
     },
     //提交订单 -- 询问
-    toSubmit(){
-      this.submitBtn = true
+    toSubmit() {
+      this.submitBtn = true;
       if (!this.address.receiverName) {
         this.$toast("请选择收货地址");
         return;
       }
-      var that = this
+      var that = this;
       api.findCurrentUserAccountInfo({}).then(res => {
-        if(res.code == 200){
-          if(res.data.role == 3 || res.data.role == 2){
-            that.onSubmit()
-          }else{
+        if (res.code == 200) {
+          if (res.data.role == 3 || res.data.role == 2) {
+            that.onSubmit();
+          } else {
             that.show = true;
           }
-        }else{
-          that.$toast(res.msg)
+        } else {
+          that.$toast(res.msg);
         }
-      })   
+      });
       setTimeout(function() {
-        that.submitBtn = false
-      },1000)     
+        that.submitBtn = false;
+      }, 1000);
     },
     onSubmit() {
       // 提交订单
-      this.submitBtn = true
+      this.submitBtn = true;
       this.$toast.loading({
-        message: '加载中...',
+        message: "加载中...",
         forbidClick: true,
-        duration: 0,
-      })
+        duration: 0
+      });
       let _this = this;
       //校验参数
       if (!this.address) {
-        this.$toast.clear()
+        this.$toast.clear();
         this.$toast("请选择收货地址");
         return;
       }
 
-      api.createOrder({
-        receiveProvince: _this.address.province,
-        receiverAddress:
-          _this.address.province +
-          _this.address.city +
-          _this.address.area +
-          _this.address.detailAddress,
-        receiverName: _this.address.receiverName,
-        receiverTelephone: _this.address.receiverTelephone,
-        remarks: _this.remark,
-        shareUserId: _this.shareUserId,
-        singleOrderList: [
-          {
-            goodId: _this.selectGoodsDetail.goodsId,
-            count: _this.selectGoodsDetail.count
-          }
-        ]
-      }).then(res => {
-        if (res.code == 200) {
-          //请求成功,
-          //唤起支付页面
-          //关闭弹框
-
-          //返回的组订单id
-          var openId = localStorage.getItem('ende-ecology-openId')
-          let groupId = res.data;
-          api.wxPay({
-            groupId: groupId,
-            openId: openId
-          }).then(res => {
-            if (res.code == 200) {
-              let payInfo = res.data;
-      console.log(JSON.stringify(payInfo))
-                // _this.onfPay()
-                _this.onPay(payInfo)
-              _this.groupId = groupId
-            } else if(res.message == '该用户未绑定微信,请先绑定微信'){
-
-            } else {
-              _this.$toast(res.msg);
+      api
+        .createOrder({
+          receiveProvince: _this.address.province,
+          receiverAddress:
+            _this.address.province +
+            _this.address.city +
+            _this.address.area +
+            _this.address.detailAddress,
+          receiverName: _this.address.receiverName,
+          receiverTelephone: _this.address.receiverTelephone,
+          remarks: _this.remark,
+          shareUserId: _this.shareUserId,
+          singleOrderList: [
+            {
+              goodId: _this.selectGoodsDetail.goodsId,
+              count: _this.selectGoodsDetail.count
             }
-          });
-        } else {
-          _this.$toast(res.msg);
-        }
-      });  
+          ]
+        })
+        .then(res => {
+          if (res.code == 200) {
+            //请求成功,
+            //唤起支付页面
+            //关闭弹框
+
+            //返回的组订单id
+            var openId = localStorage.getItem("ende-ecology-openId");
+            let groupId = res.data;
+            api
+              .wxPay({
+                groupId: groupId,
+                openId: openId
+              })
+              .then(res => {
+                if (res.code == 200) {
+                  let payInfo = res.data;
+                  console.log(JSON.stringify(payInfo));
+                  _this.onfPay();
+                  // _this.onPay(payInfo);
+                  _this.groupId = groupId;
+                } else if (res.message == "该用户未绑定微信,请先绑定微信") {
+                } else {
+                  _this.$toast(res.msg);
+                }
+              });
+          } else {
+            _this.$toast(res.msg);
+          }
+        });
       setTimeout(function() {
-        _this.submitBtn = false
-      },1000) 
+        _this.submitBtn = false;
+      }, 1000);
     },
     onPay(payInfo) {
       let _this = this;
@@ -346,35 +369,34 @@ export default {
         package: payInfo.package,
         signType: payInfo.signType, //微信签名方式：
         paySign: payInfo.paySign, //微信签名
-        success:function(res) {
-          _this.$toast.clear()
+        success: function(res) {
+          _this.$toast.clear();
           _this.show = false;
           if (res.errMsg == "chooseWXPay:ok") {
             // 使用以上方式判断前端返回,微信团队郑重提示：
             //res.err_msg将在用户支付成功后返回ok，但并不保证它绝对可靠。
             // 付款成功
             _this.$router.push({
-              path: '/paySuccess',
+              path: "/paySuccess",
               query: {
                 groupId: _this.groupId
               }
-            })
+            });
           } else {
             // 付款失败
             _this.$router.push({
               path: "/payFail"
             });
-
           }
         },
-        cancel: function(res){
+        cancel: function(res) {
           // 取消支付
-          _this.$toast.clear()
+          _this.$toast.clear();
           _this.show = false;
         },
-        fail: function(res){
+        fail: function(res) {
           // 支付失败
-          _this.$toast.clear()
+          _this.$toast.clear();
           _this.show = false;
           _this.$router.push({
             path: "/payFail"
@@ -387,69 +409,67 @@ export default {
       let _this = this;
       api.uuid({}).then(res => {
         if (res.code == 200) {
-          _this.payRecode = res.data
+          _this.payRecode = res.data;
         } else {
           _this.$toast(res.msg);
-        }
-      })
-      
-      api.uuid({}).then(res => {
-        if (res.code == 200) {
-          _this.transactionId = res.data
-        } else {
-          _this.$toast(res.msg);
-        }
-      })
-      
-    },
-    onffPay() {
-      let _this = this;
-      api.orderPay({
-        groupId: this.groupId,
-        payRecode: this.payRecode,
-        transactionId: this.transactionId,
-        payChannel: '微信'
-      }).then(res => {
-        _this.$toast.clear()
-        if (res.code == 200) {
-          _this.show = false;
-          // 付款成功
-          _this.$router.push({
-            path: '/paySuccess',
-            query: {
-              groupId: _this.groupId
-            }
-          })
-
-        } else {
-          // 付款失败
-          _this.$router.push({
-            path: "/payFail"
-          });
         }
       });
 
+      api.uuid({}).then(res => {
+        if (res.code == 200) {
+          _this.transactionId = res.data;
+        } else {
+          _this.$toast(res.msg);
+        }
+      });
+    },
+    onffPay() {
+      let _this = this;
+      api
+        .orderPay({
+          groupId: this.groupId,
+          payRecode: this.payRecode,
+          transactionId: this.transactionId,
+          payChannel: "微信"
+        })
+        .then(res => {
+          _this.$toast.clear();
+          if (res.code == 200) {
+            _this.show = false;
+            // 付款成功
+            _this.$router.push({
+              path: "/paySuccess",
+              query: {
+                groupId: _this.groupId
+              }
+            });
+          } else {
+            // 付款失败
+            _this.$router.push({
+              path: "/payFail"
+            });
+          }
+        });
     },
     onMember() {
       // 了解会员,了解合伙人
       this.$router.push({
         path: "/memberDescription"
       });
-    },
+    }
   },
   watch: {
     payRecode() {
-      console.log(this.transactionId)
-      if(this.transactionId){
-        this.onffPay()
+      console.log(this.transactionId);
+      if (this.transactionId) {
+        this.onffPay();
       }
     },
     transactionId() {
-      console.log(this.payRecode)
-      if(this.payRecode){
-        this.onffPay()
+      console.log(this.payRecode);
+      if (this.payRecode) {
+        this.onffPay();
       }
-
     }
   }
 };
@@ -633,6 +653,51 @@ export default {
 .popup-btn button {
   margin-bottom: 0.75rem;
 }
-
+.jkEfnqgK {
+  position: relative;
+  width: 100%;
+  background-color: #fff;
+  margin-bottom: 0.08rem;
+  margin-top: 0.497rem;
+}
+.lsTwjURS {
+  position: relative;
+  padding-left: 0.746rem;
+  height: 2.859rem;
+}
+._1_hNPsxH {
+  width: 100%;
+  height: 2.857rem;
+  line-height: 2.857rem;
+  font-size: 0;
+  position: relative;
+  border: none !important;
+}
+._1_hNPsxH ._2__oOi97 {
+  position: relative;
+  height: 2.859rem;
+}
+.come {
+  font-size: 0.93rem;
+  color: #151516;
+  position: absolute;
+  display: inline-block;
+  width: 1.3669rem;
+  height: 1.3669rem;
+  left: -0.5rem;
+  top: 0.6838rem;
+}
+._3s-vW8Hg {
+  margin-left: 2rem;
+  font-size: 0.93rem;
+  color: #151516;
+}
+.fa-check:before {
+  color: #58595b;
+  font-size: 0.9rem;
+  position: absolute;
+  top: 1.5rem;
+  right: 0.746rem;
+}
 /* popup end */
 </style>

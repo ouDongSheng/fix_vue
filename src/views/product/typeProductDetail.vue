@@ -1,5 +1,5 @@
 <template>
-  <div class="productDetail">
+  <div class="typeProductDetail">
     <div class="product-detail-content">
       <!-- <div id="m_common_header" class="m_item_header">
         <header class="jd-header">
@@ -15,7 +15,7 @@
       </div>-->
 
       <div>
-        <van-swipe :autoplay="3000" indicator-color="#199BFF">
+        <van-swipe :autoplay="3000" indicator-color="#199BFF" :height="320">
           <van-swipe-item v-for="(pic,picIndex) in detail.smallPic" :key="picIndex">
             <div class="jd-header-icon-back J_ping" v-on:click="back">
               <span></span>
@@ -66,9 +66,7 @@
           </div>
         </div>
       </div>
-      <a href="tel://15054054500" class="aside_btn_cart" style="bottom: 8.188rem;" id="gotoCart">
-        <van-image class="good_image" fit="contain" :src="`${publicPath}img/call3.png`"></van-image>
-      </a>
+
       <div class="detail_extra" style="margin-top: -0.7rem;">
         <div class="detail_row detail_row_cmt" id="summaryEnter" ptag="7001.1.27" style empty>
           <h3 class="tit" id="summaryTitle">评价</h3>
@@ -242,7 +240,7 @@ export default {
       publicPath: process.env.BASE_URL,
       loginFlag: true,
 
-      id: "", // 产品id
+      productType: "", // 商品类型
       detail: {
         id: "",
         name: "",
@@ -259,10 +257,12 @@ export default {
           price: "",
           propertyGoods: [
             {
-              value: ""
+              value: "",
+              imageValue:""
             },
             {
-              value: ""
+              value: "",
+              imageValue:""
             }
           ]
         }
@@ -288,9 +288,10 @@ export default {
       this.loginFlag = false;
     }
     this.$store.commit("onProductId", "");
-    this.id = this.$route.query.id;
+    this.productType = this.$route.query.productType;
+    this.masterCategory = this.$route.query.masterCategory;
     //获取产品详情,进行渲染
-    this.findProductInfo(this.id);
+    this.listByType(this.productType, this.masterCategory);
   },
   mounted() {
     wxapi.wxRegister(this.wxRegCallback);
@@ -334,29 +335,29 @@ export default {
         this.$toast("请选择规格");
       }
     },
-    findProductInfo(productId) {
+    listByType(productType, masterCategory) {
       //查询商品详情
       api
-        .findProductInfo({
-          productId: productId
+        .listByType({
+          productType: productType,
+          masterCategory: masterCategory
         })
         .then(res => {
           if (res.code == 200) {
             //商品详情
             let productInfo = res.data;
-            var _this = this;
-            _this.detail.id = productInfo.id; //产品id
-            _this.id = productInfo.id; //产品id
-            _this.selectGoodsDetail.name = productInfo.name;
-            _this.detail.name = productInfo.name; //产品名称
-            _this.detail.price = productInfo.priceRange; //产品价格区间
-            _this.detail.marketPrice = productInfo.marketPriceRange; //产品市场价格区间
-            _this.detail.total = productInfo.salesVolume; //产品销量
-            _this.detail.content = productInfo.content; //商品详情
+            this.detail.id = productInfo.id; //产品id
+            this.id = productInfo.id; //产品id
+            this.selectGoodsDetail.name = productInfo.name;
+            this.detail.name = productInfo.name; //产品名称
+            this.detail.price = productInfo.priceRange; //产品价格区间
+            this.detail.marketPrice = productInfo.marketPriceRange; //产品市场价格区间
+            this.detail.total = productInfo.salesVolume; //产品销量
+            this.detail.content = productInfo.content; //商品详情
             //轮播图片,后台是以逗号分隔进行保存
             let smallPic = productInfo.smallPic;
             if (smallPic) {
-              _this.detail.smallPic = smallPic.split(",");
+              this.detail.smallPic = smallPic.split(",");
             }
             //开始处理商品信息,将后台返回的商品good数组转化为需要的数据
             let goodVoList = productInfo.goodVoList;
@@ -458,19 +459,16 @@ export default {
 };
 </script>
 <style scoped>
+.van-swipe,
 .product-detail-text {
   background: #fff;
 }
 .van-swipe {
   background: #f8f8f8;
-  width: 100%;
-}
-van-swipe-item {
-  width: 100%;
 }
 .van-swipe .van-image {
   z-index: -1;
-  width: 100%;
+  height: 320px;
 }
 
 .product-detail-text > div {
@@ -1058,52 +1056,11 @@ span {
   text-indent: -100px;
 }
 .jd-header-icon-back J_ping {
-  background-color: #666;
-  padding: 5px;
-  width: 20px;
-  height: 20px;
-  border-radius: 20px;
-  margin: 7px 0 0 5px;
-}
-.cate_goods_images {
-  display: -webkit-flex;
-  display: flex;
-}
-.good_image {
-    width: 100%;
-    height: 10vw;
-    right: -0.1rem;
-}
-.a,
-a:visited {
-  text-decoration: none;
-  color: #333;
-}
-.aside_btn_cart,
-.aside_btn_share {
-  position: fixed;
-  width: 3rem;
-  height: 3.214rem;
-  font-size: 0;
-  right: 0;
-  bottom: 250px;
-  border-radius: 4px 0 0 4px;
-  z-index: 106;
-  margin-bottom: constant(safe-area-inset-bottom);
-  margin-bottom: env(safe-area-inset-bottom);
-}
-.aside_btn_cart .icon,
-.aside_btn_share .icon {
-  position: absolute;
-  width: 1.429rem;
-  height: 1.429rem;
-  /* background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoBAMAAAB+0KVeAAAABGdBT…dzC//uumTeEBL8dFqm7i8JO70+V3gOEVd4TQlXNpqfm404L6KyaPyjBOOHAAAAAElFTkSuQmCC)
-    no-repeat 50%; */
-  background-size: 100%;
-  top: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  left: 50%;
-  z-index: 111;
+    background-color: #666;
+    padding: 5px;
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    margin: 7px 0 0 5px;
 }
 </style>

@@ -6,6 +6,7 @@ import BindPhone from '../views/bindPhone.vue'
 
 import Home from '../views/product/home.vue'
 import ProductDetail from '../views/product/productDetail.vue'
+import TypeProductDetail from '../views/product/typeProductDetail.vue'
 import SureOrder from '../views/product/sureOrder.vue'
 import PaySuccess from '../views/product/paySuccess.vue'
 import PayFail from '../views/product/payFail.vue'
@@ -94,7 +95,16 @@ const routes = [
     meta: {
       title: '详情',
     }
-  },{
+  },
+  {
+    path: '/typeProductDetail',
+    name: 'typeProductDetail',
+    component: TypeProductDetail,
+    meta: {
+      title: '某类商品详情',
+    }
+  },
+  {
     path: '/sureOrder',
     name: 'sureOrder',
     component: SureOrder,

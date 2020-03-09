@@ -143,8 +143,8 @@ export default {
         var productId = commonUtil.parseUrlParams('productId')
         let redirectUrl = _this.ipAndPort + '?shareUserId='+shareUserId+'&productId='+productId+'#/login'
         redirectUrl = encodeURIComponent(redirectUrl);
-        window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=' + constConfig.WX_APP_ID +
-                '&redirect_uri=' + redirectUrl + '&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect';
+        // window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=' + constConfig.WX_APP_ID +
+        //         '&redirect_uri=' + redirectUrl + '&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect';
       }else{
         this.onOpenId()
       }

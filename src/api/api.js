@@ -21,6 +21,9 @@ export default {
     //根据产品id查询产品详情
     findProductInfo: { url:'app/product/findByProductId', method: 'get', file: ''},
 
+    //产品类型获取产品
+    listByType: {url:'app/product/listbytype', method: 'get', file: ''},
+
     //用户地址列表接口
     listClientAddress: { url: 'app/user/address/listByClient', method: 'get', file: ''},
     //设置地址为默认地址
@@ -88,5 +91,5 @@ export default {
     listMediumComment: {url:'app/comment/medium', method: 'get', file: ''},
     listImageComment: {url:'app/comment/image', method: 'get', file: ''},
 
-    listCountComment: {url:'app/comment/listallcount', method: 'get', file: ''},
+    listCountComment: {url:'app/comment/listallcount', method: 'get', file: ''}
 }

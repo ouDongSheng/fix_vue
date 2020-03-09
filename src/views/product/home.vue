@@ -1,74 +1,69 @@
+
 <template>
   <div class="home">
     <div class="top">
-      <div class="splider" >
+      <div class="splider">
         <van-swipe :autoplay="3000" indicator-color="#199BFF">
-        <van-swipe-item>
-        <van-image fit="contain" :src="`${publicPath}img/shouye1.jpg`" />
-        </van-swipe-item>
-        <van-swipe-item>
-        <van-image fit="contain" :src="`${publicPath}img/shouye2.jpg`" />
-        </van-swipe-item>
-        <van-swipe-item>
-        <van-image fit="contain" :src="`${publicPath}img/shouye3.jpg`" />
-        </van-swipe-item>
-        <van-swipe-item>
-        <van-image fit="contain" :src="`${publicPath}img/shouye4.jpg`" />
-        </van-swipe-item>
+          <van-swipe-item>
+            <van-image fit="contain" :src="`${publicPath}img/shouye2.png`" />
+          </van-swipe-item>
+          <van-swipe-item>
+            <van-image fit="contain" :src="`${publicPath}img/shouye4.png`" />
+          </van-swipe-item>
         </van-swipe>
       </div>
       <div class="cate_goods_images">
         <ul>
-          <a @click="onDetail(list[0].id)">
+          <a @click="onDetailByType(1,1)">
             <van-image
               class="good_image"
               fit="contain"
               :src="`${publicPath}img/20190905180731_69473.png`"
             ></van-image>
           </a>
-          <a @click="onDetail(list[1].id)">
+          <a @click="onDetailByType(2,1)">
             <van-image
               class="good_image"
               fit="contain"
               :src="`${publicPath}img/20190905180800_50139.png`"
             ></van-image>
           </a>
-          <a @click="onDetail(list[2].id)">
+          <a @click="onDetailByType(3,1)">
             <van-image
               class="good_image"
               fit="contain"
               :src="`${publicPath}img/20190905180819_62319.png`"
             ></van-image>
           </a>
-          <a @click="onDetail(list[3].id)">
+          <a @click="onDetailByType(4,1)">
             <van-image
               class="good_image"
               fit="contain"
               :src="`${publicPath}img/20190905180853_79703.png`"
             ></van-image>
           </a>
-          <a @click="onDetail(list[4].id)">
+          <a @click="onDetailByType(5,1)">
             <van-image
               class="good_image"
               fit="contain"
               :src="`${publicPath}img/20190905180918_83148.png`"
             ></van-image>
           </a>
-          <a @click="onDetail(list[0].id)">
+          <a @click="onDetailByType(6,1)">
             <van-image
               class="good_image"
               fit="contain"
               :src="`${publicPath}img/20190905181141_86536.png`"
             ></van-image>
           </a>
-          <a @click="onDetail(list[0].id)">
+          <a @click="onDetailByType(7,1)">
             <van-image
               class="good_image"
               fit="contain"
-              :src="`${publicPath}img/20190905180731_69473.png`"
+              :src="`${publicPath}img/20190905181154_55504.png`"
             ></van-image>
           </a>
-          <a @click="onDetail(list[0].id)">
+          <a @click="onDetailByType(8,0)">
             <van-image
               class="good_image"
               fit="contain"
@@ -112,7 +107,6 @@
               v-for="(goods, index) in list"
               :key="goods.id"
               @click="onDetail(goods.id)"
-            
             >
               <div class="goods-img">
                 <van-image fit="contain" :src="goods.smallPic"></van-image>
@@ -130,7 +124,7 @@
                   </div>
                 </div>
               </div>
-            </div>          
+            </div>
           </div>
           <div class="show" v-if="cur==1">
             <div
@@ -191,7 +185,7 @@ export default {
       list: "",
       col: 2,
       cur: 0,
-      masterCategory: 1 
+      masterCategory: 1
     };
   },
   created() {
@@ -210,7 +204,7 @@ export default {
   },
   computed: {
     itemWidth() {
-      var width = (document.body.clientWidth);
+      var width = document.body.clientWidth;
       return width;
     },
     gutterWidth() {
@@ -280,6 +274,15 @@ export default {
           id: id
         }
       });
+    },
+    onDetailByType(productType, masterCategory) {
+      this.$router.push({
+        path: "/typeproductDetail",
+        query: {
+          productType: productType,
+          masterCategory: masterCategory
+        }
+      });
     }
   }
 };
@@ -292,7 +295,6 @@ export default {
 /* productlist start */
 .home >>> .vue-waterfall-column {
   margin-left: 10px;
-
 }
 .show {
   width: 100%;
@@ -301,7 +303,7 @@ export default {
   -webkit-justify-content: flex-start;
   justify-content: flex-start;
   margin-bottom: 3rem;
-   flex-wrap:wrap ;
+  flex-wrap: wrap;
 }
 .goods-div {
   background: #fff;
@@ -309,7 +311,7 @@ export default {
   overflow: hidden;
   margin-bottom: 10px;
 }
-.topnav-show{
+.topnav-show {
   width: 50%;
 }
 .goods-img {
