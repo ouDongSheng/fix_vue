@@ -1,8 +1,21 @@
 <template>
   <div class="home">
     <div class="top">
-      <div class="splider">
-        <van-image fit="contain" :src="`${publicPath}img/20190618105418_79494.png`" />
+      <div class="splider" >
+        <van-swipe :autoplay="3000" indicator-color="#199BFF">
+        <van-swipe-item>
+        <van-image fit="contain" :src="`${publicPath}img/shouye1.jpg`" />
+        </van-swipe-item>
+        <van-swipe-item>
+        <van-image fit="contain" :src="`${publicPath}img/shouye2.jpg`" />
+        </van-swipe-item>
+        <van-swipe-item>
+        <van-image fit="contain" :src="`${publicPath}img/shouye3.jpg`" />
+        </van-swipe-item>
+        <van-swipe-item>
+        <van-image fit="contain" :src="`${publicPath}img/shouye4.jpg`" />
+        </van-swipe-item>
+        </van-swipe>
       </div>
       <div class="cate_goods_images">
         <ul>
