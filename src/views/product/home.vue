@@ -77,14 +77,14 @@
         <a
           @click="cur=0,masterCategory=1,pageIndex=1,list=null,getList()"
           class="tilte_tab_a"
-          :class="{active:cur==0}"
+          :class="{selected:cur==0}"
         >
           <span>清洗单品</span>
         </a>
         <a
           @click="cur=1,masterCategory=0,pageIndex=1,list=null,getList()"
           class="tilte_tab_b"
-          :class="{active:cur==1}"
+          :class="{selected:cur==1}"
         >
           <span>优惠套餐</span>
         </a>
@@ -397,7 +397,7 @@ export default {
   font-size: 1.2rem;
   text-align: center;
 }
-.tilte_tab_a:hover {
+a.selected, .tilte_tab_a:hover {
   color: #ee3142;
   font-weight: 650;
   border-bottom: 2px solid #ee3142;

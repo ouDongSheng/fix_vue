@@ -343,7 +343,7 @@ export default {
               .then(res => {
                 if (res.code == 200) {
                   let payInfo = res.data;
-                  console.log(JSON.stringify(payInfo));
+                  // console.log(JSON.stringify(payInfo));
                   _this.onfPay();
                   // _this.onPay(payInfo);
                   _this.groupId = groupId;

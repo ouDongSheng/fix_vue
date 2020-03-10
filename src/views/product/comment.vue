@@ -777,12 +777,6 @@ span {
   min-height: 44px;
   background: #fff;
 }
-.jd-header-icon-back,
-.jd-header-icon-logo {
-  position: absolute;
-  width: 40px;
-  height: 44px;
-}
 .jd-header-new-title {
   margin: 0 10px 0 70px;
   height: 44px;
