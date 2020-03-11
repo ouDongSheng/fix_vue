@@ -6,9 +6,17 @@
       </div>
       <div class="pay-success-label">支付成功!</div>
     </div>
-    <div class="btn">
+     <div class="btn">
       <van-button type="info" block @click="onOrderDetail">查看订单</van-button>
     </div>
+    <div class="btn">
+        <van-button type="info" block  @click="onBackHome">返回首页</van-button>
+    </div>
+    <div class="btn">
+      <a href="tel://15054054500" class="aside_btn_cart" style="bottom: 8.188rem;" id="gotoCart">
+        <van-button type="info" block>提醒商家接单</van-button>
+      </a>
+    </div> 
   </div>
 </template>
 
@@ -38,6 +46,9 @@ export default {
           state:1
         }
       })
+    },
+    onBackHome() {
+      this.$router.push({path:'/'})
     }
   }
 }
@@ -49,7 +60,7 @@ export default {
   overflow: hidden;
 }
 .pay-success{
-  margin-top: 5rem;
+  margin-top: 10rem;
 }
 .pay-success-img{
   width: 4.7rem;
@@ -66,6 +77,8 @@ export default {
   font-size: .88rem;
 }
 .btn{
-  padding: 3rem;
+  padding: 1rem 0rem;  
+  width: 11rem;
+  margin:0 auto
 }
 </style>
