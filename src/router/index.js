@@ -101,7 +101,7 @@ const routes = [
     name: 'typeProductDetail',
     component: TypeProductDetail,
     meta: {
-      title: '某类商品详情',
+      title: '详情',
     }
   },
   {

@@ -67,104 +67,49 @@
         </div>
       </div>
 
-      <div class="detail_extra" style="margin-top: -0.7rem;">
-        <div class="detail_row detail_row_cmt" id="summaryEnter" ptag="7001.1.27" style empty>
-          <h3 class="tit" id="summaryTitle">评价</h3>
-          <i class="icon_promote" id="summaryEnterIco"></i>
-          <p class="good" id="evalRateP">
-            好评
-            <strong id="evalRate">100%</strong>
-          </p>
-          <p class="count">
-            共
-            <span class="num" id="evalNo2">300+</span> 条
-          </p>
-          <p class="cmt_none_tips" id="evalNone" style="display: none;">暂无评价，欢迎您购买之后留下宝贵的评价</p>
+      <div style="background: white;">
+        <div class="detail_extra" style="margin-top: -0.7rem;">
+          <div class="detail_row detail_row_cmt" id="summaryEnter" ptag="7001.1.27" style empty>
+            <h3 class="tit" id="summaryTitle">评价</h3>
+            <i class="icon_promote" id="summaryEnterIco" @click="onEvaluate()"></i>
+            <!-- <p class="good" id="evalRateP">
+              好评
+              <strong id="evalRate">100%</strong>
+            </p>
+            <p class="count">
+              共
+              <span class="num" id="evalNo2">300+</span> 条
+            </p> -->
+            <p class="cmt_none_tips" id="evalNone" style="display: none;">暂无评价，欢迎您购买之后留下宝贵的评价</p>
+          </div>
         </div>
-      </div>
 
-      <div class="detail_row detail_cmt" id="mainCmt" style>
-        <div class="cmt_list_wrap">
-          <ul class="cmt_list" id="evalDet_main">
-            <li>
-              <div class="cmt_user" ptag="7001.3.7">
-                <img
-                  src="//storage.360buyimg.com/i.imageUpload/616d6f7335323731343234383733333538343534_sma.jpg"
-                />
-                <span class="user">n***nfafsdaf</span>
-                <span class="credit star-five">
-                  <span></span>
-                </span>
-                <span class="date">2019-12-31</span>
+        <div class="detail_row detail_cmt" id="mainCmt" style>
+          <div class="cmt_list_wrap">
+            <ul class="cmt_list" id="evalDet_main">
+              <li v-for="comment in commentList" :key="comment.id"> 
+              <div class="cmt_user" ptag="7001.3.7"> 
+                <img src="//storage.360buyimg.com/i.imageUpload/616d6f7335323731343234383733333538343534_sma.jpg" /> 
+                <span class="user">150********</span> 
+                <span class="credit star-five"> 
+                  <span v-for="gradleIndex in comment.grade" :class="generateClassName(gradleIndex)" :key="gradleIndex">
+                    </span> </span> 
+                <span class="date">{{comment.time}}</span> 
+              </div> 
+              <div class="cmt_cnt" ptag="7001.3.7" v-for="(commentInfo,pindex) in comment.commentInfoListVo" :key="commentInfo.id">
+              {{commentInfo.content}}
+              </div> 
+              <div class="cmt_att" ptag="7001.3.7"> 
+                <span v-for="(commentInfo) in comment.commentInfoListVo" :key="commentInfo.id"> <img class="img" v-bind:src="commentInfo.images" /> </span>
               </div>
-              <div
-                class="cmt_cnt"
-                ptag="7001.3.7"
-              >首先颜值真的很高啊，浅灰色的 硅胶材质，手感真的一级棒，刷头也是硅胶的，洗锅的时候还是很方便的，手不需要沾水就能轻松洗干净，尤其是在洗热锅的时候真的太有用了，这家的家居用品设计得都挺好看的，又实用，已经买了很多宝贝了。</div>
-              <div class="cmt_att" ptag="7001.3.7">
-                <span
-                  class="video"
-                  data-video="https://vod.300hu.com/4c1f7a6atransbjngwcloud1oss/451bc60f264503006274838529/v.f30.mp4?dockingId=90d852ba-e380-405b-877f-b71ff85735e7&amp;storageSource=3"
-                  style="overflow:hidden;"
-                >
-                  <video
-                    data-width="720"
-                    data-height="1280"
-                    width="100%"
-                    height="auto"
-                    src="https://vod.300hu.com/4c1f7a6atransbjngwcloud1oss/451bc60f264503006274838529/v.f30.mp4?dockingId=90d852ba-e380-405b-877f-b71ff85735e7&amp;storageSource=3"
-                    poster="//img.300hu.com/4c1f7a6atransbjngwcloud1oss/451bc60f264503006274838529/imageSampleSnapshot/1577798436_412594380.100_873.jpg"
-                    webkit-playsinline="true"
-                    playsinline
-                    preload="none"
-                    muted="muted"
-                  >暂时不支持播放该视频</video>
-                  <div class="button"></div>
-                </span>
-                <span class="img">
-                  <img
-                    ptag="7001.1.29"
-                    src="//img30.360buyimg.com/shaidan/s128x96_jfs/t1/102127/24/9234/251799/5e0b4c30E7f779429/60d057b1740f271e.jpg!cc_100x100!q70.dpg.webp"
-                    prview="//img30.360buyimg.com/shaidan/jfs/t1/102127/24/9234/251799/5e0b4c30E7f779429/60d057b1740f271e.jpg!q70.dpg.webp"
-                  />
-                </span>
-                <span class="img">
-                  <img
-                    ptag="7001.1.29"
-                    src="//img30.360buyimg.com/shaidan/s128x96_jfs/t1/103068/37/9069/234333/5e0b4c30Eaded0aeb/1cd799709a80357e.jpg!cc_100x100!q70.dpg.webp"
-                    prview="//img30.360buyimg.com/shaidan/jfs/t1/103068/37/9069/234333/5e0b4c30Eaded0aeb/1cd799709a80357e.jpg!q70.dpg.webp"
-                  />
-                </span>
-              </div>
-            </li>
-            <li>
-              <div class="cmt_user" ptag="7001.3.8">
-                <img
-                  src="//img11.360buyimg.com/jdphoto/s40x40_jfs/t1/25255/18/10701/1678/5c89f892E78c04688/684d63c0d68e39b1.png"
-                />
-                <span class="user">j***v</span>
-                <span class="credit star-five">
-                  <span></span>
-                </span>
-                <span class="date">2019-09-27</span>
-              </div>
-              <div class="cmt_cnt" ptag="7001.3.8">此用户未填写评价内容</div>
-              <div class="cmt_att" ptag="7001.3.8">
-                <span class="img">
-                  <img
-                    ptag="7001.1.29"
-                    src="//img30.360buyimg.com/shaidan/s128x96_jfs/t1/51881/2/12133/532903/5d8decd7E1b02532f/1864b6b795e6708b.jpg!cc_100x100!q70.dpg.webp"
-                    prview="//img30.360buyimg.com/shaidan/jfs/t1/51881/2/12133/532903/5d8decd7E1b02532f/1864b6b795e6708b.jpg!q70.dpg.webp"
-                  />
-                </span>
-              </div>
-            </li>
-          </ul>
-          <div id="summaryEnter3" class="cmt_more" @click="onEvaluate()" style>
-            <a href="javascript:;" ptag="7001.1.28" class="cmt_more_lnk">
-              查看全部评价
-              <i class="icon_arrow"></i>
-            </a>
+            </li> 
+            </ul>
+            <div id="summaryEnter3" class="cmt_more" @click="onEvaluate()" style>
+              <a href="javascript:;" ptag="7001.1.28" class="cmt_more_lnk">
+                查看全部评价
+                <i class="icon_arrow"></i>
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -277,6 +222,21 @@ export default {
         count: "",
         freight: ""
       }, // 选择的商品详情
+      commentList: {
+        id: "", // 评论id
+        orderId: "",
+        productId: "",
+        grade: "",
+        time: "",
+        commentInfoListVo: {
+          id: "",
+          userId: "",
+          content: "",
+          images: "",
+          commentId: "",
+          parentId: ""
+        }
+      },
 
       show: false, // 规格弹出层
       ipAndPort: config.ipAndPort
@@ -346,6 +306,7 @@ export default {
           if (res.code == 200) {
             //商品详情
             let productInfo = res.data;
+            var _this = this;
             this.detail.id = productInfo.id; //产品id
             this.id = productInfo.id; //产品id
             this.selectGoodsDetail.name = productInfo.name;
@@ -400,6 +361,8 @@ export default {
                 this.selectGoodsDetail.pic = this.detail.smallPic[0];
               }
             }
+
+            this.listGoodComment(productInfo.id, 1, 2);
           }
         });
     },
@@ -454,6 +417,36 @@ export default {
     },
     back() {
       this.$router.go(-1); //返回上一层
+    },listGoodComment(productId, page, limit) {
+      api
+        .listGoodComment({
+          productId: productId,
+          page: page,
+          limit: limit
+        })
+        .then(res => {
+          if (res.code == 200) {
+            //商品详情
+            let commentInfo = res.data;
+            var _this = this;
+            _this.commentList = commentInfo;
+            //讲后台时间戳转成yyyy-MM-dd格式
+            for (var i in _this.commentList) {
+              var date = new Date(_this.commentList[i].time); //时间戳为10位需*1000，时间戳为13位的话不需乘1000
+              var Y = date.getFullYear() + "-";
+              var M =
+                (date.getMonth() + 1 < 10
+                  ? "0" + (date.getMonth() + 1)
+                  : date.getMonth() + 1) + "-";
+              var D = date.getDate() + " ";
+              _this.commentList[i].time = Y + M + D;
+            }
+          }
+        });
+    },
+    generateClassName(index) {
+      // 调用方法，动态生成index
+      return `game_item-${index}`;
     }
   }
 };
@@ -682,7 +675,10 @@ export default {
 }
 
 .detail_row {
-  min-height: 45px;
+  min-height: 2.85rem;
+}
+.detail_extra {
+    height: 3rem;
 }
 .detail_extra .detail_row {
   position: relative;
