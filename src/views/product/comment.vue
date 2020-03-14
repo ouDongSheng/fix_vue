@@ -8,11 +8,11 @@
               <span v-on:click="back"></span>
             </div>
             <div class="jd-header-new-title">
-              <span id="summary_title" style>商品评价</span>
-              <span id="evalRateP2">
+              <span id="summary_title" style="margin-right: 5rem;">商品评价</span>
+              <!-- <span id="evalRateP2">
                 好评度
                 <i id="evalRate2">100%</i>
-              </span>
+              </span> -->
             </div>
           </div>
         </header>
@@ -34,11 +34,12 @@
           </div>
           <ul class="cmt_list" id="evalDet_main">
             <li v-for="comment in commentList" :key="comment.id">
+              <div v-for="commentInfo in comment.commentInfoListVo" :key="commentInfo.id">
               <div class="cmt_user" ptag="7001.3.7">
                 <img
-                  src="//storage.360buyimg.com/i.imageUpload/616d6f7335323731343234383733333538343534_sma.jpg"
+                  :src="commentInfo.headImage"
                 />
-                <span class="user">150********</span>
+                <span class="user">{{commentInfo.account}}</span>
                 <span class="credit star-five">
                   <span
                     v-for="gradleIndex in comment.grade"
@@ -51,20 +52,11 @@
               <div
                 class="cmt_cnt"
                 ptag="7001.3.7"
-                v-for="(commentInfo,pindex) in comment.commentInfoListVo"
-                :key="commentInfo.id"
               >{{commentInfo.content}}</div>
               <div class="cmt_att" ptag="7001.3.7">
-                <span v-for="(commentInfo) in comment.commentInfoListVo" :key="commentInfo.id">
-                  <img class="img" v-bind:src="commentInfo.images" />
+                <span >
+                  <img v-image-preview class="img" v-bind:src="commentInfo.images" />
                 </span>
-                <!-- <span class="img">
-                  <img
-                    ptag="7001.1.29"
-                    src="//img30.360buyimg.com/shaidan/s128x96_jfs/t1/103068/37/9069/234333/5e0b4c30Eaded0aeb/1cd799709a80357e.jpg!cc_100x100!q70.dpg.webp"
-                    prview="//img30.360buyimg.com/shaidan/jfs/t1/103068/37/9069/234333/5e0b4c30Eaded0aeb/1cd799709a80357e.jpg!q70.dpg.webp"
-                  />
-                </span>-->
               </div>
               <div class="cmt_sku">
                 <div class="reply">
@@ -77,6 +69,7 @@
                   >回复</a>-->
                   <!-- <a href="javascript:void(0);" class="reply_btn btn">回复</a> -->
                 </div>
+              </div>
               </div>
             </li>
 
@@ -152,7 +145,9 @@ export default {
           content: "",
           images: "",
           commentId: "",
-          parentId: ""
+          parentId: "",
+          account:"",
+          headImage:""
         }
       },
 
@@ -240,6 +235,17 @@ export default {
                   : date.getMonth() + 1) + "-";
               var D = date.getDate() + " ";
               _this.commentList[i].time = Y + M + D;
+
+              //隐藏用户昵称
+              for (var j = 0; j < _this.commentList[i].commentInfoListVo.length; j++) {
+                var str = _this.commentList[i].commentInfoListVo[j].account;
+                var len = str.length-2;
+                var xing = '';
+                for (var k=0;k<len;k++) {
+                xing+='*';
+                }
+                _this.commentList[i].commentInfoListVo[j].account = str.substring(0,1)+xing+str.substring(str.length-1);
+              }
             }
           }
         });
@@ -265,6 +271,17 @@ export default {
                   : date.getMonth() + 1) + "-";
               var D = date.getDate() + " ";
               _this.commentList[i].time = Y + M + D;
+                            
+              //隐藏用户昵称
+              for (var j = 0; j < _this.commentList[i].commentInfoListVo.length; j++) {
+                var str = _this.commentList[i].commentInfoListVo[j].account;
+                var len = str.length-2;
+                var xing = '';
+                for (var k=0;k<len;k++) {
+                xing+='*';
+                }
+                _this.commentList[i].commentInfoListVo[j].account = str.substring(0,1)+xing+str.substring(str.length-1);
+              }
             }
           }
         });
@@ -290,6 +307,17 @@ export default {
                   : date.getMonth() + 1) + "-";
               var D = date.getDate() + " ";
               _this.commentList[i].time = Y + M + D;
+                            
+              //隐藏用户昵称
+              for (var j = 0; j < _this.commentList[i].commentInfoListVo.length; j++) {
+                var str = _this.commentList[i].commentInfoListVo[j].account;
+                var len = str.length-2;
+                var xing = '';
+                for (var k=0;k<len;k++) {
+                xing+='*';
+                }
+                _this.commentList[i].commentInfoListVo[j].account = str.substring(0,1)+xing+str.substring(str.length-1);
+              }
             }
           }
         });
@@ -315,6 +343,17 @@ export default {
                   : date.getMonth() + 1) + "-";
               var D = date.getDate() + " ";
               _this.commentList[i].time = Y + M + D;
+                            
+              //隐藏用户昵称
+              for (var j = 0; j < _this.commentList[i].commentInfoListVo.length; j++) {
+                var str = _this.commentList[i].commentInfoListVo[j].account;
+                var len = str.length-2;
+                var xing = '';
+                for (var k=0;k<len;k++) {
+                xing+='*';
+                }
+                _this.commentList[i].commentInfoListVo[j].account = str.substring(0,1)+xing+str.substring(str.length-1);
+              }
             }
           }
         });
@@ -340,6 +379,17 @@ export default {
                   : date.getMonth() + 1) + "-";
               var D = date.getDate() + " ";
               _this.commentList[i].time = Y + M + D;
+                            
+              //隐藏用户昵称
+              for (var j = 0; j < _this.commentList[i].commentInfoListVo.length; j++) {
+                var str = _this.commentList[i].commentInfoListVo[j].account;
+                var len = str.length-2;
+                var xing = '';
+                for (var k=0;k<len;k++) {
+                xing+='*';
+                }
+                _this.commentList[i].commentInfoListVo[j].account = str.substring(0,1)+xing+str.substring(str.length-1);
+              }
             }
           }
         });

@@ -18,6 +18,10 @@ Vue.prototype.$mui = mui
 import waterfall from 'vue-waterfall2'
 Vue.use(waterfall)
 
+import VueDirectiveImagePreviewer from 'vue-directive-image-previewer'
+import 'vue-directive-image-previewer/dist/assets/style.css'
+Vue.use(VueDirectiveImagePreviewer) 
+
 Vue.use(Vant)
 Vue.use(MyComponents)
 

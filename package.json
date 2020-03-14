@@ -27,6 +27,7 @@
     "@vue/cli-service": "^4.0.0",
     "less": "^3.11.1",
     "less-loader": "^5.0.0",
+    "vue-directive-image-previewer": "^2.2.2",
     "vue-template-compiler": "^2.6.10",
     "weixin-js-sdk": "^1.4.0-test"
   },
