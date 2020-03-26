@@ -151,7 +151,10 @@
               </div>
             </div>
           </div>
-        </template>
+           <div style=";position: absolute;bottom: 2rem;width: 100%;"> 
+          <a style="text-align: center; display: inherit;color: #999999" rel="nofollow" href="http://www.beian.miit.gov.cn" target="_blank" >粤ICP备20012989号</a>
+         </div>
+        </template>    
       </waterfall>
     </div>
   </div>
@@ -302,7 +305,7 @@ export default {
   display: flex;
   -webkit-justify-content: flex-start;
   justify-content: flex-start;
-  margin-bottom: 3rem;
+  margin-bottom: 3rem; 
   flex-wrap: wrap;
 }
 .goods-div {
