@@ -36,6 +36,8 @@ import MyTeam from '../views/personal/myTeam.vue'
 
 import AboutUs from '../views/aboutus/aboutUs.vue'
 
+import LoginDefault from '../views/login_default.vue'
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -50,7 +52,7 @@ const routes = [
         name: 'home',
         component: Home,
         meta: {
-          title: '家电清洗',
+          title: '大图清洗',
           keepAlive: true //此组件需要被缓存
         }
       },
@@ -271,6 +273,13 @@ const routes = [
     component: comment,
     meta: {
       title: '评论',
+    }
+  },{
+    path: '/login_default',
+    name: 'login_default',
+    component: LoginDefault,
+    meta: {
+      title: '默认登录',
     }
   }
 ]

@@ -21,11 +21,11 @@
               :src="`${publicPath}img/20190905180731_69473.png`"
             ></van-image>
           </a>
-          <a @click="onDetailByType(2,1)">
+          <a @click="onDetailByType(10,1)">
             <van-image
               class="good_image"
               fit="contain"
-              :src="`${publicPath}img/20190905180800_50139.png`"
+              :src="`${publicPath}img/20190905180731_69474.png`"
             ></van-image>
           </a>
           <a @click="onDetailByType(3,1)">
@@ -35,8 +35,22 @@
               :src="`${publicPath}img/20190905180819_62319.png`"
             ></van-image>
           </a>
-          <a @click="onDetailByType(4,1)">
+          <a @click="onDetailByType(12,1)">
             <van-image
+              class="good_image"
+              fit="contain"
+              :src="`${publicPath}img/20190905180819_62320.png`"
+            ></van-image>
+          </a>
+          <a @click="onDetailByType(2,1)">
+            <van-image
+              class="good_image"
+              fit="contain"
+              :src="`${publicPath}img/20190905180800_50139.png`"
+            ></van-image>
+          </a>
+          <a @click="onDetailByType(4,1)">
+          <van-image
               class="good_image"
               fit="contain"
               :src="`${publicPath}img/20190905180853_79703.png`"
@@ -54,6 +68,13 @@
               class="good_image"
               fit="contain"
               :src="`${publicPath}img/20190905181141_86536.png`"
+            ></van-image>
+          </a>
+          <a @click="onDetailByType(14,1)">
+            <van-image
+              class="good_image"
+              fit="contain"
+              :src="`${publicPath}img/20190905180853_79705.png`"
             ></van-image>
           </a>
           <a @click="onDetailByType(7,1)">
@@ -152,7 +173,7 @@
             </div>
           </div>
            <div style=";position: absolute;bottom: 2rem;width: 100%;"> 
-          <a style="text-align: center; display: inherit;color: #999999" rel="nofollow" href="http://www.beian.miit.gov.cn" target="_blank" >粤ICP备20012989号</a>
+          <a style="text-align: center; display: inherit;color: #999999" rel="nofollow" href="http://www.beian.miit.gov.cn" target="_blank" >粤ICP备20012989号-1</a>
          </div>
         </template>    
       </waterfall>

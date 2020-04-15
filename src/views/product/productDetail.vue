@@ -47,18 +47,12 @@
             </div>
           </div>
         </div>
-        <div class="product-detail-serve">
-          <div>
-            <div>服务：</div>
-            <div>
-              <van-image fit="contain" :src="`${publicPath}img/product-detail-serve.png`"></van-image>
-              <span>7天无理由退换</span>
-            </div>
-          </div>
+        <div class="product-detail-serve" style="margin-left: 0px;padding: 0px;">
+          <img :src="`${publicPath}img/20200406174416.png`" style="width: 100%;height:100%">
         </div>
         <div class="product-detail-sku">
           <div>
-            <div>规格：</div>
+            <div>已选：</div>
             <div>{{selectGoodsDetail.property ? selectGoodsDetail.property:'点击选择商品规格'}}</div>
           </div>
           <div @click="onPShow">
@@ -119,7 +113,7 @@
     </div>
       <div class="product-detail-detail">
         <div class="product-detail-detail-title">商品详情</div>
-        <div class="product-detail-detail-content" v-html="detail.content"></div>
+        <div class="product-detail-detail-content" v-html="detail.content" style="margin-top:-0.9rem"></div>
       </div>
     </div>
 
@@ -160,16 +154,14 @@
           </div>
         </div>
         <div class="sku-goods-btn">
-          <van-button type="info" block @click="onPBuy" v-if="loginFlag">立即购买</van-button>
-          <van-button type="info" block @click="onLogin" v-else>登录</van-button>
+          <van-button type="info" block @click="onPBuy()">立即购买</van-button>
         </div>
       </div>
     </van-popup>
 
     <div class="fixed-btn">
       <div class="btn">
-        <van-button type="info" block @click="onBuy" v-if="loginFlag">立即购买</van-button>
-        <van-button type="info" block @click="onLogin" v-else>登录</van-button>
+        <van-button type="info" block @click="onBuy(loginFlag)">立即购买</van-button>
       </div>
     </div>
   </div>
@@ -284,7 +276,10 @@ export default {
       // 数量发生改变
       this.selectGoodsDetail.count = value;
     },
-    onBuy() {
+    onBuy(loginFlag) {
+      if(!loginFlag) {
+        this.onLogin();
+      }
       // 立即购买
       this.onPShow();
     },
@@ -648,9 +643,9 @@ van-swipe-item {
   line-height: 2rem;
 }
 .sku-goods-sku > div:nth-of-type(2) li.active {
-  background: rgba(25, 155, 255, 0.12);
-  border-color: #199bff;
-  color: #199bff;
+  background: #fdf0f0;
+  border-color: #ff4142;
+  color: #e93b3d;
 }
 .sku-good-num {
   display: flex;

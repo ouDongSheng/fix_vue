@@ -1,8 +1,8 @@
 <template>
   <div class="login">
     <div>
-      <div class="title">登录</div>
-      <div>
+      <!-- <div class="title">登录</div> -->
+      <!-- <div>
         <van-cell-group> 
           <van-field type="tel" v-model="phone" placeholder="请输入手机号码" />
           <van-field v-model="code" center clearable placeholder="请输入验证码">
@@ -12,8 +12,8 @@
         <div class="btn">
           <van-button type="info" round block @click="onLogin">登录</van-button>
         </div>
-      </div>
-      <div class="weixin-login">
+      </div> -->
+      <!-- <div class="weixin-login">
         <van-divider :style="{ color: '#666666', borderColor: '#DDDDDD', padding: '0 3rem' }">
           使用微信登录
         </van-divider>
@@ -25,7 +25,7 @@
             @click="onWeixin"
           />
         </div>
-      </div>
+      </div> -->
 
     </div>
   </div>
@@ -159,7 +159,7 @@ export default {
         if(res.code == 200){
           localStorage.setItem("ende-ecology-openId", res.data.openid)
           _this.openInfo = res.data;
-         
+          this.onWeixin();
         }else{
           _this.$toast(res.message)
         }
@@ -203,6 +203,9 @@ export default {
             },600)
           }else if(res.code == 502){
             let openId = res.data.openId;
+            var productId = commonUtil.parseUrlParams('productId')
+            _this.$store.commit("onProductId", productId);
+            // _this.$router.push({ path: "/" });
             //用户未绑定手机号,引导用户去绑定手机号
             _this.$router.push({
               path: '/bindPhone',

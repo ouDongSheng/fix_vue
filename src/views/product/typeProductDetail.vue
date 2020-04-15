@@ -15,7 +15,7 @@
       </div>-->
 
       <div>
-        <van-swipe :autoplay="3000" indicator-color="#199BFF" :height="320">
+        <van-swipe :autoplay="3000" indicator-color="#199BFF">
           <van-swipe-item v-for="(pic,picIndex) in detail.smallPic" :key="picIndex">
             <div class="jd-header-icon-back J_ping" v-on:click="back">
               <span></span>
@@ -47,18 +47,12 @@
             </div>
           </div>
         </div>
-        <div class="product-detail-serve">
-          <div>
-            <div>服务：</div>
-            <div>
-              <van-image fit="contain" :src="`${publicPath}img/product-detail-serve.png`"></van-image>
-              <span>7天无理由退换</span>
-            </div>
-          </div>
+        <div class="product-detail-serve" style="margin-left: 0px;padding: 0px;">
+            <img :src="`${publicPath}img/20200406174416.png`" style="width: 100%;height:100%">
         </div>
         <div class="product-detail-sku">
           <div>
-            <div>规格：</div>
+            <div>已选：</div>
             <div>{{selectGoodsDetail.property ? selectGoodsDetail.property:'点击选择商品规格'}}</div>
           </div>
           <div @click="onPShow">
@@ -116,15 +110,15 @@
 
       <div class="product-detail-detail">
         <div class="product-detail-detail-title">商品详情</div>
-        <div class="product-detail-detail-content" v-html="detail.content"></div>
+        <div class="product-detail-detail-content" v-html="detail.content" style="margin-top: -0.9rem"></div>
       </div>
     </div>
 
-    <van-popup v-model="show" position="bottom" :duration=".3" :style="{ height: '490px' }">
+    <van-popup v-model="show" position="bottom" :duration=".3" :style="{ height: '490px'}">
       <div class="sku-goods">
         <div class="sku-goods-div">
           <div class="sku-goods-img">
-            <van-image fit="contain" :src="detail.smallPic[0]"></van-image>
+            <van-image fit="contain" :src="smallPic"></van-image>
           </div>
           <div class="sku-goods-label">
             <div>{{selectGoodsDetail.name}}</div>
@@ -157,16 +151,14 @@
           </div>
         </div>
         <div class="sku-goods-btn">
-          <van-button type="info" block @click="onPBuy" v-if="loginFlag">立即购买</van-button>
-          <van-button type="info" block @click="onLogin" v-else>登录</van-button>
+          <van-button type="info" block @click="onPBuy(loginFlag)">立即购买</van-button>
         </div>
       </div>
     </van-popup>
 
     <div class="fixed-btn">
       <div class="btn">
-        <van-button type="info" block @click="onBuy" v-if="loginFlag">立即购买</van-button>
-        <van-button type="info" block @click="onLogin" v-else>登录</van-button>
+        <van-button type="info" block @click="onBuy(loginFlag)">立即购买</van-button>
       </div>
     </div>
   </div>
@@ -184,6 +176,7 @@ export default {
     return {
       publicPath: process.env.BASE_URL,
       loginFlag: true,
+      smallPic:"",
 
       productType: "", // 商品类型
       detail: {
@@ -272,15 +265,20 @@ export default {
       this.selectGoodsDetail.property = $(".sku-goods-sku li")
         .eq(this.pIndex)
         .text();
+      this.selectGoodsDetail.name = this.selectGoodsDetail.property;
       this.selectGoodsDetail.goodsId = list[this.pIndex].id;
       this.selectGoodsDetail.price = list[this.pIndex].price;
-      this.selectGoodsDetail.pic = this.detail.smallPic[0];
+      this.smallPic = this.detail.smallPic[this.pIndex];
+      this.selectGoodsDetail.pic = this.detail.smallPic[this.pIndex];
     },
     onCount(value) {
       // 数量发生改变
       this.selectGoodsDetail.count = value;
     },
-    onBuy() {
+    onBuy(loginFlag) {
+      if(!loginFlag) {
+        this.onLogin();
+      }
       // 立即购买
       this.onPShow();
     },
@@ -319,6 +317,7 @@ export default {
             let smallPic = productInfo.smallPic;
             if (smallPic) {
               this.detail.smallPic = smallPic.split(",");
+              this.smallPic = smallPic.split(",")[0];
             }
             //开始处理商品信息,将后台返回的商品good数组转化为需要的数据
             let goodVoList = productInfo.goodVoList;
@@ -461,7 +460,6 @@ export default {
 }
 .van-swipe .van-image {
   z-index: -1;
-  height: 320px;
 }
 
 .product-detail-text > div {
@@ -633,9 +631,9 @@ export default {
   line-height: 2rem;
 }
 .sku-goods-sku > div:nth-of-type(2) li.active {
-  background: rgba(25, 155, 255, 0.12);
-  border-color: #199bff;
-  color: #199bff;
+ background: #fdf0f0;
+  border-color: #ff4142;
+  color: #e93b3d;
 }
 .sku-good-num {
   display: flex;
