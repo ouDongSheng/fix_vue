@@ -4,8 +4,8 @@
       <div>
         <van-swipe 
           :autoplay="3000" 
-          indicator-color="#199BFF"
-          :height="320"
+          indicator-color="#ED1F1F"
+          :height="400"
         >
           <van-swipe-item v-for="(pic,picIndex) in detail.smallPic" :key="picIndex">
             <van-image fit="contain" :src="pic"></van-image>
@@ -39,7 +39,7 @@
           <div>
             <div>服务：</div>
             <div>
-              <van-image fit="contain" :src="`${publicPath}img/product-detail-serve.png`"></van-image>
+              <van-image fit="contain" :src="`${publicPath}img/product-detail-serve-orange.png`"></van-image>
               <span>7天无理由退换</span>
             </div>
           </div>
@@ -102,7 +102,7 @@
           </div>
         </div>
         <div class="sku-goods-btn">
-          <van-button type="info" block @click="onPBuy" v-if="loginFlag">立即购买</van-button>
+          <van-button type="info" block @click="onPBuy" v-if="loginFlag">立即预约</van-button>
           <van-button type="info" block @click="onLogin" v-else>登录</van-button>
         </div>
       </div>
@@ -110,7 +110,7 @@
 
     <div class="fixed-btn">
       <div class="btn">
-          <van-button type="info" block @click="onBuy" v-if="loginFlag">立即购买</van-button>
+          <van-button type="info" block @click="onBuy" v-if="loginFlag">立即预约</van-button>
           <van-button type="info" block @click="onLogin" v-else>登录</van-button>
       </div>
     </div>
@@ -282,7 +282,7 @@ export default {
       this.onShare()
     },
     onShare(){
-      // 微信自定义分享给朋友
+
       var userInfo = localStorage.getItem('ende-ecology-userinfo')
       userInfo = JSON.parse(userInfo)
       var shareUserId = userInfo.id
@@ -317,7 +317,9 @@ export default {
   background: #f8f8f8
 }
 .van-swipe .van-image {
-  height: 320px;
+  width: auto;  
+  height: auto;
+  /* height: 320px; */
 }
 
 .product-detail-text>div{
@@ -407,6 +409,10 @@ export default {
   width: 1.69rem;
   height: .44rem;
 }
+.van-image__img{
+  height: auto;
+  width: auto;
+}
 .product-detail-sku>div>div:nth-of-type(2){
   color: #666666;
 }
@@ -487,9 +493,9 @@ export default {
   line-height: 2rem;
 }
 .sku-goods-sku > div:nth-of-type(2) li.active {
-  background:rgba(25,155,255,0.12);
-  border-color: #199BFF;
-  color: #199BFF;
+  background:rgba(237, 31, 31, 0.171);
+  border-color: #ED1F1F;
+  color: #ED1F1F;
 }
 .sku-good-num {
   display: flex;

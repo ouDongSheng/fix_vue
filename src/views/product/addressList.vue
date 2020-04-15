@@ -5,7 +5,7 @@
                 <div class='address-list-div' v-for='(item,index) in list' :key='item.id'>
                     <div class='my-address'>
                         <div class='my-address-img'>
-                            <van-image fit='contain' :src='`${publicPath}img/address-list-address.png`'></van-image>
+                            <van-image fit='contain' :src='`${publicPath}img/address-list-address-orange2.png`'></van-image>
                         </div>
                         <div class='my-address-content' @click="checkAddress(item.id)">
                             <div class='my-address-person'>

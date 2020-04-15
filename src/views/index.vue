@@ -18,7 +18,7 @@
       >
         <span style="font-size: .63rem;" :class="currIndex == index ? active:''">{{item.title}}</span>  
         <template slot="icon" slot-scope="props"> 
-          <img style="width: 2rem;height: 2rem;" :src="props.active ? item.active : item.normal">
+          <img style="width: 1.7rem;height: 1.7rem;" :src="props.active ? item.active : item.normal">
         </template>
       </van-tabbar-item>
     </van-tabbar>

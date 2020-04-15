@@ -3,7 +3,7 @@
         <div class="sure-order-address">
             <div v-if="!address" class="no-address">
                 <div class="no-address-img">
-                    <van-image fit="contain" :src="`${publicPath}img/sure-order-address.png`"></van-image>
+                    <van-image fit="contain" :src="`${publicPath}img/sure-order-address-orange.png`"></van-image>
                     <div>您还没有收货地址哦~</div>
                 </div>
                 <div class="no-address-btn">
@@ -12,7 +12,7 @@
             </div>
             <div v-else class="my-address" @click="onAddress">
                 <div class="my-address-img">
-                    <van-image fit="contain" src="img/sure-order-local.png"></van-image>
+                    <van-image fit="contain" src="img/sure-order-local-orange.png"></van-image>
                 </div>
                 <div class="my-address-content">
                     <div class="my-address-person">
@@ -67,7 +67,7 @@
             </div>
         </div>
 
-        <van-popup
+        <!-- <van-popup
           v-model="show"
           :style="{ width: '80%' }"
           :close-on-click-overlay="popupCloseFlag"
@@ -76,9 +76,9 @@
               <div class="popup-title">提示</div>
               <div class="popup-content">
                   <div class="pupup-p">
-                      <p>您还未领取合伙人权益</p>
-                      <p>成为会员及合伙人将会享受更多的购买优惠</p>
-                  </div>
+                      <p>您还未领取注册企业众号</p>
+                      <!-- <p>成为会员及合伙人将会享受更多的购买优惠</p> -->
+                  <!-- </div>
                   <div class="popup-btn">
                       <van-button type="info" block size="normal" @click="onMember">了解会员</van-button>
                       <van-button type="info" block size="normal" @click="onMember">了解合伙人</van-button>
@@ -86,7 +86,7 @@
                   </div>
               </div>
           </div>
-        </van-popup>
+        </van-popup> -->
 
     </div>
 </template>

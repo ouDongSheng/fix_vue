@@ -8,111 +8,24 @@
               <div class="personal-img-head">
                 <van-image fit="contain" :src="detail.headImage"/>
               </div>
-              <van-image v-if="memberClass==1" fit="contain" :src="`${publicPath}img/personal-f.png`"/>
-              <van-image v-else-if="memberClass==2" fit="contain" :src="`${publicPath}img/personal-s.png`"/>
-              <van-image v-else-if="memberClass==3" fit="contain" :src="`${publicPath}img/personal-t.png`"/>
+              <!-- <van-image v-if="memberClass==1" fit="contain" :src="`${publicPath}img/personal-f.png`"/>
+              <van-image v-else-if="memberClass==2" fit="contain" :src="`${publicPath}img/personal-s.png`"/> -->
+              <van-image  fit="contain" :src="`${publicPath}img/personal-t-orange.png`"/>
             </div>
             <div>
               <div class="personal-username">{{detail.name}}</div>
               <div class="personal-phone">{{detail.account|phoneFilter}}</div>
             </div>
           </div>
-          <div class="personal-code" @click="onPhoto">
+          <!-- <div class="personal-code" @click="onPhoto">
             <van-image fit="contain" :src="TUrl+'app/user/userQrCode?id='+id"/>
-          </div>
+          </div> -->
         </div>
-        <div class="personal-icon">
+        <!-- <div class="personal-icon">
           <div :class="'personal-icon-btn '+(memberClass==2?'member':(memberClass==3?'partner':''))">
             {{memberClass==1?'普通用户':(memberClass==2?'会员':(memberClass==3?'合伙人':''))}}
           </div>
-        </div>
-      </div>
-
-      <!-- 我的钱包 -->
-      <div class="personal-div" v-if="memberClass!=1">
-        <div class="personal-div-title">
-          <van-cell title="我的钱包" :icon="`${publicPath}img/personal-wallet.png`"/>
-        </div>
-        <div class="personal-div-content">
-          <div class="personal-div-wallet">
-            <div class="personal-wallet-item">
-              <div class="personal-wallet-money">{{detail.grandTotalMoney|formatPrice}}</div>
-              <div class="personal-wallet-name">累计收益(元)</div>
-              <div class="personal-wallet-btn">
-                <van-image fit="contain" :src="`${publicPath}img/personal-wallet-right.png`" @click="onWallet"/>
-              </div>
-            </div>
-            <div class="personal-wallet-item">
-              <div class="personal-wallet-money">{{detail.canWithdrawMoney|formatPrice}}</div>
-              <div class="personal-wallet-name">提现金额(元)</div>
-              <div class="personal-wallet-btn">
-                <div class="personal-wallet-icon" @click="onWithdraw">提现</div>
-              </div>
-            </div>
-            <div class="personal-wallet-item" v-if="memberClass==3">
-              <div class="personal-wallet-money">{{detail.score}}</div>
-              <div class="personal-wallet-name">我的积分</div>
-              <div class="personal-wallet-btn">
-                <van-image fit="contain" :src="`${publicPath}img/personal-wallet-right.png`" @click="onPointDetail"/>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="personal-div" v-if="memberClass==3">
-        <div class="personal-div-title">
-          <van-cell title="我的团队" :icon="`${publicPath}img/personal-team.png`" is-link>
-            <span class="personal-team-title-value" @click="onMyTeam">
-              更多
-            </span>
-          </van-cell>
-        </div>
-        <div>
-          <div class="personal-div-content-li" @click="onUser">
-            <van-cell title="普通用户" :icon="`${publicPath}img/personal-team-first.png`" is-link>
-            <span class="personal-team-item-value">
-              {{detail.teamCommonUserCount}}位
-            </span>
-          </van-cell>
-          </div>
-          <div class="personal-div-content-li" @click="onMember">
-            <van-cell title="会员" :icon="`${publicPath}img/personal-team-second.png`" is-link>
-            <span class="personal-team-item-value">
-              {{detail.teamVIPUserCount}}位
-            </span>
-          </van-cell>
-          </div>
-          <div class="personal-div-content-li" @click="onPartner">
-            <van-cell title="合伙人" :icon="`${publicPath}img/personal-team-thrid.png`" is-link>
-            <span class="personal-team-item-value">
-              {{detail.teamPartnerUserCount}}位
-            </span>
-          </van-cell>
-          </div>
-        </div>
-      </div>
-
-      <!-- 积分池 -->
-      <div class="personal-div" v-if="memberClass==3">
-        <div class="personal-div-title">
-          <van-cell title="积分池" :icon="`${publicPath}img/personal-point.png`"/>
-        </div>
-        <div class="personal-div-content">
-          <van-row>
-            <van-col span="8" v-for="(item,index) in detail.awardPoolTeamCountList" :key="index">
-              <div class="personal-div-icon">
-                <div class="personal-div-icon-money">
-                  {{item.rangeScoreStart|formatPrice}}
-                </div>
-                <div class="personal-div-icon-person">
-                  <van-image fit="contain" :src="`${publicPath}img/personal-point-person.png`"/>
-                  <span>{{item.teamCount}}</span>
-                </div>
-              </div>
-            </van-col>
-          </van-row>
-        </div>
+        </div> -->
       </div>
 
       <!-- 个人订单 -->
@@ -240,7 +153,7 @@ export default {
         title: "家电清洗", // 分享标题, 请自行替换
         desc: "家电清洗，质量保证，好物与你分享", // 分享描述, 请自行替换
         link: 'http://192.168.31.188:8080/?shareUserId='+this.id+'#/home', // 分享链接，根据自身项目决定是否需要split
-        imgUrl: 'http://192.168.31.188:8080/img/logo.png', // 分享图标, 请自行替换，需要绝对路径
+        imgUrl: 'http://192.168.31.188:8080//img/logo.png', // 分享图标, 请自行替换，需要绝对路径
         success: () => {
           alert('分享成功')
         },
@@ -381,9 +294,9 @@ export default {
       var _this = this
       setTimeout(function() {
         var shareUserId = commonUtil.parseUrlParams('shareUserId')
-        window.location.href = 'http://192.168.31.188:8080?shareUserId='+shareUserId+'#/login'
+        window.location.href = 'http://192.168.31.188:8080/?shareUserId='+shareUserId+'#/login'
         var productId = commonUtil.parseUrlParams('productId')
-        window.location.href = 'http://192.168.31.188:8080?shareUserId='+shareUserId+'&productId='+productId+'#/login'
+        window.location.href = 'http://192.168.31.188:8080/?shareUserId='+shareUserId+'&productId='+productId+'#/login'
       }, 500);
 
     }
