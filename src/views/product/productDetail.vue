@@ -66,8 +66,8 @@
       <div style="background: white;">
       <div class="detail_extra" style="margin-top: -0.7rem;">
         <div class="detail_row detail_row_cmt" id="summaryEnter" ptag="7001.1.27" style empty>
-          <h3 class="tit" id="summaryTitle">评价</h3>
-          <i class="icon_promote" id="summaryEnterIco" @click="onEvaluate()"></i>
+          <!-- <h3 class="tit" id="summaryTitle">评价</h3>
+          <i class="icon_promote" id="summaryEnterIco" @click="onEvaluate()"></i> -->
           <!-- <p class="good" id="evalRateP">
             好评
             <strong id="evalRate">100%</strong>
