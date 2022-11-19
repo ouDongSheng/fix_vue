@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.0.0",
-    "@vue/cli-service": "^4.0.0",
+    "@vue/cli-service": "^5.0.8",
     "less": "^3.11.1",
     "less-loader": "^5.0.0",
     "vue-directive-image-previewer": "^2.2.2",
